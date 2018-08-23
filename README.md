@@ -4,6 +4,11 @@ This is a learning project for working with Neo4j.
 
 ## Start via Docker
 
-``` bash
-docker run --rm -p 7474:7474 -p 7687:7687 neo4j:3.4
+``` powershell
+$path = $(Get-Location).Path
+$nonwindowspath = ($path -replace "\\","/")
+$data = "$($nonwindowspath)/data"
+$logs = "$($nonwindowspath)/logs"
+
+docker run --rm -p 7474:7474 -p 7687:7687 --volume="$($data):/data" --volume="$($logs):/logs" neo4j:3.4
 ```
