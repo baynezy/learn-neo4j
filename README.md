@@ -9,6 +9,7 @@ $path = $(Get-Location).Path
 $nonwindowspath = ($path -replace "\\","/")
 $data = "$($nonwindowspath)/data"
 $logs = "$($nonwindowspath)/logs"
+$plugins = "$($nonwindowspath)/plugins"
 
-docker run --rm -p 7474:7474 -p 7687:7687 --volume="$($data):/data" --volume="$($logs):/logs" neo4j:3.4
+docker run --rm -p 7474:7474 -p 7687:7687 --volume="$($data):/data" --volume="$($logs):/logs" --volume="$($plugins):/plugins" neo4j:3.4
 ```
