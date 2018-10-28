@@ -8,5 +8,6 @@ FROM neo4j:3.4
 LABEL MAINTAINER="Simon Baynes"
 
 COPY --from=downloader /downloads/apoc-3.4.0.3-all.jar plugins/apoc-3.4.0.3-all.jar
-RUN echo "dbms.security.procedures.unrestricted=apoc.*" >> conf/neo4j.conf
+RUN echo "dbms.security.procedures.unrestricted=apoc.*" >> conf/neo4j.conf &&\
+	echo "apoc.import.file.enabled=true" >> conf/neo4j.conf
 CMD ["neo4j"]
